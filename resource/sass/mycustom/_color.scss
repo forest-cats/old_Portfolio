@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+$background: #212121;
+// $main: #cc0033;
+$main: #990000;
+$hover: #ff0000;
+$sub: #043c78;
+
+$font-en: 'Alex Brush',
+cursive;
+$font-ja: 'Sawarabi Mincho';
+
+
+/* ================================================== *
+ *    base style
+ * ================================================== */
+
+@mixin bg-color {
+    background: $background;
+    color: #fff;
+}
+
+@mixin font-en {
+    font-family: $font-en;
+}
+
+@mixin font-ja {
+    font-family: 'Sawarabi Mincho';
+}
+
+
+/* ------------------------------------------------- *
+ *        nav-link
+ * ------------------------------------------------- */
+
+@mixin nav-link {
+    color: $main;
+    &:hover,
+    &:focus,
+    &:active {
+        color: $hover;
+        text-decoration: none;
+    }
+}
+
+@mixin nav-link-pc {
+    color: $main;
+    &:hover,
+    &:focus,
+    &:active {
+        color: $hover;
+        text-decoration: none;
+    }
+}
+
+
+/* ------------------------------------------------- *
+ *        toggle-link
+ * ------------------------------------------------- */
+
+@mixin toggle-color {
+    background: $background;
+    border-color: $main;
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: $hover;
+        background: $background;
+    }
+}
+
+@mixin toggle-border {
+    border-color: $main;
+}
+
+@mixin toggle-icon {
+    color: $main;
+}
+
+
+/* ------------------------------------------------- *
+ *        main-table
+ * ------------------------------------------------- */
+
+@mixin top-table-border {
+    border: 1px solid $main;
+}
+
+@mixin contents-title {
+    color: $main;
+    font-family: $font-en;
+}
+
+@mixin contents-title-pc {
+    color: $main;
+    font-family: $font-en;
+}
+
+
+/* ------------------------------------------------- *
+ *        footer
+ * ------------------------------------------------- */
+
+@mixin footer-link {
+    color: $main;
+    &:hover,
+    &:focus,
+    &:active {
+        color: $hover;
+        text-decoration: none;
+    }
+}
+
+@mixin footer-link-pc {
+    color: $main;
+    &:hover,
+    &:focus,
+    &:active {
+        color: $hover;
+        text-decoration: none;
+    }
+}

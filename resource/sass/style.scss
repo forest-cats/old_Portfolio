@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+@import "reset/sanitize";
+@import "bootstrap/bootstrap";
+@import "mycustom/color";
+
+
+
+
+
+/*    Google fonts    */
+
+@import url('https://fonts.googleapis.com/css?family=Alex+Brush&subset=latin-ext');
+@import url('https://fonts.googleapis.com/earlyaccess/sawarabimincho.css'); // @import "slick/slick","slick/slick-theme";
+
+/* ================================================== *
+ *    base style
+ * ================================================== */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    @include bg-color;
+    line-height: 2;
+}
+
+body.pageTop {
+    // position: relative;
+}
+
+@media (min-width: 768px) {
+    //ブラウザサイズ768px以上：PC
+    body.pageTop {}
+}
+
+
+
+
+
+
+/* ------------------------------------------------- *
+ *        header
+ * ------------------------------------------------- */
+
+header.navbar-default {
+    @include bg-color;
+    padding: 1rem 0;
+    border: none;
+    margin: 0;
+    .navbar-nav {
+        li {
+            text-align: center;
+            a {
+                line-height: 2.4rem;
+                @include nav-link;
+                .nav-en {
+                    @include font-en;
+                    display: block;
+                    font-size: 4rem;
+                }
+                .nav-ja {
+                    @include font-ja;
+                    display: block;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+    .navbar-toggle {
+        @include toggle-color;
+        margin-right: 0;
+    }
+    .navbar-collapse {
+        @include toggle-border;
+        max-height: 36rem;
+    }
+    .navbar-header {
+        margin: 1.5rem;
+        background: url("../images/logo01.png") no-repeat left center;
+        background-size: contain;
+        height: 5rem;
+        width: 25rem;
+        border: 1px solid #fff; //後で消す
+        .navbar-brand {
+            text-indent: -9999px;
+        }
+    }
+}
+
+// .navbar-default .navbar-collapse
+// .navbar-default .navbar-form{
+//     @include toggle-btn;
+// }
+@media (min-width: 768px) {
+    //ブラウザサイズ以上：PC
+    header.navbar-default {
+        padding: 20px 0;
+        .navbar-nav {
+            a {
+                @include nav-link-pc;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+/* ------------------------------------------------- *
+ *        main-table
+ * ------------------------------------------------- */
+
+main {
+    background: #fff;
+    margin-top: 12rem;
+    margin-bottom: 8rem;
+}
+
+.top-main-table {
+    @include top-table-border;
+    .contents-title {
+        @include contents-title;
+        text-align: center; // padding: 1rem;
+        font-size: 3.8rem;
+        margin: 2rem 0;
+    }
+    .main-contents {
+        margin-bottom: 2rem;
+    }
+}
+
+
+
+
+
+/* ------------------------------------------------- *
+ *        footer
+ * ------------------------------------------------- */
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 2rem 0;
+    .text-center {
+        margin-bottom: 1.5rem;
+        a {
+            @include footer-link;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    //ブラウザサイズ以上：PC
+    footer {
+        .text-center {
+            a {
+                @include footer-link-pc;
+            }
+        }
+    }
+}
