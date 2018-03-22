@@ -1,15 +1,19 @@
 @charset "UTF-8";
 
-$background: #212121;
-// $main: #cc0033;
+// $background: #212121;
+$background: #000000;
 $main: #990000;
-$hover: #ff0000;
-$sub: #043c78;
+$main-sub: #90A4AE;
+
+$nav-hover: #ff0000;
+
+$main-pc: #90A4AE;
+$nav-hover-pc: #990000;
+$nav-accent: #ff33ff;
 
 $font-en: 'Alex Brush',
 cursive;
 $font-ja: 'Sawarabi Mincho';
-
 
 /* ================================================== *
  *    base style
@@ -17,42 +21,37 @@ $font-ja: 'Sawarabi Mincho';
 
 @mixin bg-color {
     background: $background;
-    color: #fff;
+    color: #043c78;
 }
-
-@mixin font-en {
-    font-family: $font-en;
-}
-
-@mixin font-ja {
-    font-family: 'Sawarabi Mincho';
-}
-
 
 /* ------------------------------------------------- *
  *        nav-link
  * ------------------------------------------------- */
 
-@mixin nav-link {
+@mixin nav {
     color: $main;
-    &:hover,
-    &:focus,
-    &:active {
-        color: $hover;
-        text-decoration: none;
+        @media (min-width: 768px) {
+            color: $main-pc;
+        }
+}
+
+@mixin navfont-en {
+    font-family: $font-en;
+    letter-spacing: 0.4rem;
+    font-size: 4rem;
+    @media (min-width: 768px) {
+        letter-spacing: 0.2rem;
+        font-size: 3rem;
     }
 }
 
-@mixin nav-link-pc {
-    color: $main;
-    &:hover,
-    &:focus,
-    &:active {
-        color: $hover;
-        text-decoration: none;
+@mixin navfont-ja {
+    font-family: $font-ja;
+    font-size: 1.2rem;
+    @media (min-width: 768px) {
+        font-size: 1.2rem;
     }
 }
-
 
 /* ------------------------------------------------- *
  *        toggle-link
@@ -64,8 +63,8 @@ $font-ja: 'Sawarabi Mincho';
     &:hover,
     &:focus,
     &:active {
-        border-color: $hover;
         background: $background;
+        border-color: $nav-hover;
     }
 }
 
@@ -89,13 +88,48 @@ $font-ja: 'Sawarabi Mincho';
 @mixin contents-title {
     color: $main;
     font-family: $font-en;
+    letter-spacing: 0.6rem;
 }
+ // @mixin contents-title-pc {
+//     color: $main;
+//     font-family: $font-en;
+// }
 
-@mixin contents-title-pc {
+/* ------------------------------------------------- *
+ *        pagetop-btn
+ * ------------------------------------------------- */
+
+@mixin pagetop-btn {
+    background: $background;
     color: $main;
-    font-family: $font-en;
+    border: 0.1rem solid $main;
 }
 
+/* ------------------------------------------------- *
+ *       works
+ * ------------------------------------------------- */
+@mixin works-subtitle {
+    color: $main-sub;
+    border: 0.1rem solid #ff0000;
+    font-family: $font-en;
+    font-size : 2rem;
+        @media (min-width: 768px) {
+        font-size: 3rem;
+    }
+}
+/* ------------------------------------------------- *
+ *       profile
+ * ------------------------------------------------- */
+@mixin prof-table {
+    border: 1px solid $main;
+}
+/* ------------------------------------------------- *
+ *       contact
+ * ------------------------------------------------- */
+@mixin mail-form-text {
+    color: $main-sub;
+    font-family: $font-ja;
+}
 
 /* ------------------------------------------------- *
  *        footer
@@ -106,7 +140,7 @@ $font-ja: 'Sawarabi Mincho';
     &:hover,
     &:focus,
     &:active {
-        color: $hover;
+        color: $nav-hover;
         text-decoration: none;
     }
 }
@@ -116,7 +150,8 @@ $font-ja: 'Sawarabi Mincho';
     &:hover,
     &:focus,
     &:active {
-        color: $hover;
+        color: $nav-hover;
         text-decoration: none;
     }
 }
+

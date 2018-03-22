@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
-@import "reset/sanitize";
 @import "bootstrap/bootstrap";
-@import "mycustom/color";
-
-
-
+@import "slick/slick",
+"slick/slick-theme";
+@import "reset/sanitize";
+@import "mycustom/color",
+"mycustom/nav-hover";
 
 
 /*    Google fonts    */
@@ -23,22 +23,17 @@ html {
 
 body {
     @include bg-color;
-    line-height: 2;
-}
-
-body.pageTop {
-    // position: relative;
-}
-
-@media (min-width: 768px) {
-    //ブラウザサイズ768px以上：PC
-    body.pageTop {}
 }
 
 
 
-
-
+// body.pageTop {
+//     position: relative;
+// }
+// @media (min-width: 768px) {
+//     //ブラウザサイズ768px以上：PC
+//     body.pageTop {}
+// }
 
 /* ------------------------------------------------- *
  *        header
@@ -48,33 +43,29 @@ header.navbar-default {
     @include bg-color;
     padding: 1rem 0;
     border: none;
-    margin: 0;
     .navbar-nav {
         li {
             text-align: center;
-            a {
-                line-height: 2.4rem;
-                @include nav-link;
+            .nav-btn {
+                height: 100%;
+                @include nav;
+                vertical-align: middle;
                 .nav-en {
-                    @include font-en;
-                    display: block;
-                    font-size: 4rem;
+                    @include navfont-en;
                 }
                 .nav-ja {
-                    @include font-ja;
-                    display: block;
-                    font-size: 1.4rem;
+                    @include navfont-ja;
                 }
             }
         }
     }
+
     .navbar-toggle {
         @include toggle-color;
-        margin-right: 0;
+        margin: 1rem;
     }
     .navbar-collapse {
-        @include toggle-border;
-        max-height: 36rem;
+        @include toggle-border; // max-height: 36rem;
     }
     .navbar-header {
         margin: 1.5rem;
@@ -82,24 +73,55 @@ header.navbar-default {
         background-size: contain;
         height: 5rem;
         width: 25rem;
-        border: 1px solid #fff; //後で消す
+        border: 0.1rem solid #fff; //後で消す
         .navbar-brand {
             text-indent: -9999px;
         }
     }
 }
 
-// .navbar-default .navbar-collapse
-// .navbar-default .navbar-form{
-//     @include toggle-btn;
-// }
 @media (min-width: 768px) {
     //ブラウザサイズ以上：PC
     header.navbar-default {
-        padding: 20px 0;
-        .navbar-nav {
-            a {
-                @include nav-link-pc;
+        height: 12rem;
+        .container {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            .navbar-header {
+                margin: 0;
+                height: 8rem;
+                width: 30rem;
+                .navbar-brand {
+                    width: 100%;
+                    height: 100%;
+                    padding: 1rem 0;
+                    margin-left: 0;
+                }
+            }
+            .navbar-collapse {
+                margin-top: 0;
+                margin-bottom: 0;
+                .navbar-nav {
+                    margin: 0;
+                    padding: 0;
+                    height: 8rem;
+                    li {
+                        margin-left: 1rem;
+                        width: 12rem;
+                        .nav-btn {
+                            width: 100%;
+                            height: 8rem;
+                            padding: 2rem 0;
+                            .nav-en {
+                                width: 100%; // height: 5rem;
+                            }
+                            .nav-ja {
+                                width: 100%; // height: 3rem;
+                            }
+                        }
+                        @include nav-action;
+                    }
+                }
             }
         }
     }
@@ -115,27 +137,186 @@ header.navbar-default {
  * ------------------------------------------------- */
 
 main {
-    background: #fff;
-    margin-top: 12rem;
+    // background: #fff;
+    margin-top: 10rem;
     margin-bottom: 8rem;
+    .main-table {
+        width: 90%;
+        @include top-table-border;
+        .contents-title {
+            @include contents-title;
+            text-align: center;
+            padding: 1rem;
+            font-size: 3.8rem;
+            margin: 2rem 0;
+        }
+        .main-contents {
+            margin-bottom: 2rem;
+        }
+    }
 }
 
-.top-main-table {
-    @include top-table-border;
-    .contents-title {
-        @include contents-title;
-        text-align: center; // padding: 1rem;
-        font-size: 3.8rem;
-        margin: 2rem 0;
+@media (min-width: 768px) {
+    main {
+        margin-top: 12rem;
+        .main-table {
+            .contents-title {
+                font-size: 5rem;
+            }
+        }
     }
-    .main-contents {
+}
+
+
+
+
+
+
+
+/* ================================================== *
+ *    works
+ * ================================================== */
+
+.works-space {
+    width: 100%;
+    margin: 0 auto 2rem;
+    .works-subtitle {
+        text-align: center;
+        padding: 1rem;
+        margin: 1rem auto;
+        @include works-subtitle;
+    }
+    .works-contents {
+        margin: 0 0 1rem;
+    }
+}
+
+.works-slick {
+    padding: 10px;
+    margin: 1rem 0;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .works-contents {
+        margin: 1rem auto;
+    }
+    .works-slick {
+        width: 100%;
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+}
+
+
+
+
+
+
+/* ------------------------------------------------- *
+ *       profile
+ * ------------------------------------------------- */
+
+#prof-image {
+    width: 90%;
+    margin: 0 auto 2rem;
+}
+
+#prof-table {
+    width: 90%;
+    margin: 0 auto;
+    tr {
+        width: 100%;
+        td {
+            width: 100%;
+            @include prof-table;
+            padding: 20px;
+            &:nth-of-type(1) {
+                width: 30%;
+            }
+            &:nth-of-type(2) {
+                width: auto;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    #prof-image {
         margin-bottom: 2rem;
     }
 }
 
 
+/* ------------------------------------------------- *
+ *        contact
+ * ------------------------------------------------- */
+
+.contact-mail {
+    width: 90%;
+    margin: 0 auto;
+    @include mail-form-text;
+}
+
+.form-group {
+    border: 1px solid #ff0000;
+    #mail-submit {
+        margin: 0 auto;
+        .custom-mail-btn {
+            margin: 0 auto;
+        }
+    }
+}
+@media (min-width: 768px) {
+    .contact-mail {
+        width: 80%;
+        margin: 0 auto;
+        #inputname {
+            width: 20rem;
+        }
+        #inputkana {
+            width: 20rem;
+        }
+        #inputemail {
+            width: 40rem;
+        }
+        #message {
+            width: 60rem;
+        }
+    }
+
+}
 
 
+
+
+/* ------------------------------------------------- *
+ *        pagetop-btn
+ * ------------------------------------------------- */
+
+// #pagetop-btn {
+//     position: fixed;
+//     bottom: 20px;
+//     font-size: 77%;
+//     a {
+//         @include pagetop-btn;
+//         border-radius: 5px;
+//         width: 100px;
+//         padding: 2rem 0;
+//         text-align: center;
+//         display: block;
+//         &:hover {
+//             text-decoration: none;
+//             background: #999;
+//         }
+//     }
+// }
 
 /* ------------------------------------------------- *
  *        footer
@@ -155,11 +336,11 @@ footer {
 
 @media (min-width: 768px) {
     //ブラウザサイズ以上：PC
-    footer {
-        .text-center {
-            a {
-                @include footer-link-pc;
-            }
-        }
-    }
+    // footer {
+    //     .text-center {
+    //         a {
+    //             @include footer-link-pc;
+    //         }
+    //     }
+    // }
 }

@@ -1,42 +1,71 @@
-
-/*        中央から表示(top-custom)        */
-$(function(){
-  $('.top-custom-images p').addClass('move');
-  $(window).scroll(function(){
-    $(".top-custom-images").each(function(){
-      var imgPos = $(this).offset().top;
-      var scroll = $(window).scrollTop();
-      var windowHeight = $(window).height();
-      if (scroll > imgPos - windowHeight + windowHeight/5){
-        $(this).find("p").removeClass('move');
-      } else {
-        $(this).find("p").addClass('move');
-      }
+/* ================================================== *
+ *    ふわっと中心から表示
+ * ================================================== */
+$(function() {
+    $('head').append(
+        '<style>#fadein{display:none;}'
+    );
+    $(window).on("load", function() {
+        $('#fadein').delay(600).fadeIn("slow");
     });
-  });
-});
-$(function(){
-  $('.top-custom-contents p').addClass('move');
-  $(window).scroll(function(){
-    $(".top-custom-contents").each(function(){
-      var imgPos = $(this).offset().top;
-      var scroll = $(window).scrollTop();
-      var windowHeight = $(window).height();
-      if (scroll > imgPos - windowHeight + windowHeight/5){
-        $(this).find("p").removeClass('move');
-      } else {
-        $(this).find("p").addClass('move');
-      }
-    });
-  });
 });
 
-/*        pagetop-btn        */
-$(document).ready(function(){
-    $('.pagetop-btn').click(function () { // #topBtnをクリックすると
-        $('body,html').animate({ // いちばん上にanimateする
-        scrollTop: 0 // 戻る位置
-        }, 700); // 戻るスピード
-        return false;
+  $(function() {
+    $('head').append(
+        '<style>footer{display:none;}'
+    );
+    $(window).on("load", function() {
+        $('footer').delay(1000).fadeIn("slow");
+    });
+});
+/* ================================================== *
+ *    裏から順番に表示
+ * ================================================== */
+$(function() {
+    $('head').append(
+        '<style>.main-contents{display:none;}'
+    );
+    $(window).on("load", function() {
+        $('.main-contents:nth-of-type(1)').delay(1400).fadeIn("slow");
+        $('.main-contents:nth-of-type(2)').delay(1800).fadeIn("slow");
+        $('.main-contents:nth-of-type(3)').delay(2200).fadeIn("slow");
+        $('.main-contents:nth-of-type(4)').delay(2600).fadeIn("slow");
+    });
+});
+
+/* ================================================== *
+ *    Works-slick
+ * ================================================== */
+$(function() {
+    $('.works-slick').slick({
+        arrows: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true, //自動再生
+        centerMode: true,
+        centerPAdding: '5%',
+        // dots: true,
+        responsive: [{
+            breakpoint: 768,
+            settings: {
+                arrows: false,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true, //自動再生
+                centerMode: true,
+                centerPAdding: '5%',
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                arrows: false,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true, //自動再生
+                centerMode: true,
+                centerPAdding: '5%',
+            }
+        }]
     });
 });

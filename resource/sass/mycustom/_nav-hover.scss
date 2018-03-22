@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+@mixin nav-set1 {
+    @media (min-width: 768px) {
+        color: $nav-hover;
+        letter-spacing: 4px;
+    }
+}
+
+@mixin nav-set {
+    @media (min-width: 768px) {
+        color: $nav-hover-pc;
+        letter-spacing: 4px;
+    }
+}
+
+/* ------------------------------------------------- *
+ *        nav-hover
+ * ------------------------------------------------- */
+
+@mixin nav-action {
+    @media (min-width: 768px) {
+        .nav-btn {
+            position: relative;
+            display: inline-block;
+            transition: 0.3s;
+            &::before,
+            &::after {
+                position: absolute;
+                left: 50%;
+                content: '';
+                width: 0;
+                height: 1px;
+                background-color: $nav-hover-pc;
+                transition: all 0.8s;
+                -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+            }
+            &::before {
+                top: 0;
+            }
+            &::after {
+                bottom: 0;
+            }
+            &:hover::before,
+            &:hover::after {
+                width: 100%;
+            }
+        }
+
+        .nav-btn .nav-en {
+            transition: .3s;
+            span {
+                display: inline-block;
+            }
+        }
+
+        .nav-btn:hover {
+            .nav-en span {
+                -webkit-transform: rotateY(360deg);
+                transform: rotateY(360deg);
+                transition: 1s;
+            }
+            .nav-ja {
+                color: $nav-hover-pc;
+                letter-spacing: 5px;
+                -webkit-transform: rotateY(360deg);
+                transform: rotateY(360deg);
+                transition: 1s;
+            }
+        }
+
+        .nav-btn:hover .nav-en span {
+            &:nth-of-type(1) {
+                @include nav-set1;
+                color: #ff0000;
+                -webkit-transition-delay: .04s;
+                transition-delay: .04s;
+            }
+            &:nth-of-type(2) {
+                @include nav-set;
+                -webkit-transition-delay: .12s;
+                transition-delay: .12s;
+            }
+            &:nth-of-type(3) {
+                @include nav-set;
+                -webkit-transition-delay: .20s;
+                transition-delay: .20s;
+            }
+            &:nth-of-type(4) {
+                @include nav-set;
+                -webkit-transition-delay: .28s;
+                transition-delay: .28s;
+            }
+            &:nth-of-type(5) {
+                @include nav-set;
+                -webkit-transition-delay: .36s;
+                transition-delay: .36s;
+            }
+            &:nth-of-type(6) {
+                @include nav-set;
+                -webkit-transition-delay: .44s;
+                transition-delay: .44s;
+            }
+            &:nth-of-type(7) {
+                @include nav-set;
+                -webkit-transition-delay: .52s;
+                transition-delay: .52s;
+            }
+        }
+    }
+}
